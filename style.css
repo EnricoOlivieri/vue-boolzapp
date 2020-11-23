@@ -95,22 +95,22 @@ body{
   overflow-y: scroll;
 }
 
-.item-contact{
-    height:80px;
-    border-bottom: 1px solid lightgray;
-    margin-left: 10px;
-    display: flex;
+.contacts{
+  height:80px;
+  border-bottom: 1px solid lightgray;
+  margin-left: 10px;
+  display: flex;
 }
 
 .contacts img{
-    width: 50px;
-    border-radius: 50%;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .contacts h6{
   flex-direction: column;
   margin-left: 10px;
-  margin-left: 3px 0
+  margin-left: 3px 0;
 }
 
 .main {
@@ -137,8 +137,8 @@ body{
 
 .main-information img{
   border-radius: 30px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin-right: 5px;
 }
 .main-text-information h6,p{
@@ -162,33 +162,34 @@ body{
 
 .space-message{
   height: calc(100% - 120px);
-  background-image: url("img/mine.jpg")
+  background-image: url("img/mine.jpg");
+  overflow-y: scroll;
 }
 
 .text-area{
-  height:60px;
+  height: 60px;
   background-color: #EDEDED;
-  display:flex;
+  display: flex;
   padding: 5px 0px;
 }
 
 .text-area > .smile{
-  height:100%;
+  height: 100%;
   color: grey;
-  display:flex;
+  display: flex;
   align-items: center;
   margin: 0 30px;
 }
 
-.text-control, .text-send{
-  height:100%;
+.text-send{
+  height: 100%;
   width: 100%;
 }
 
 .text-area > .attached{
-  height:100%;
+  height: 100%;
   color: grey;
-  display:flex;
+  display: flex;
   align-items: center;
   margin: 0 30px;
 }
