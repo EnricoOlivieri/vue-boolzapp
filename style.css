@@ -92,7 +92,7 @@ body{
 .list-contact{
   height:calc(100% - 200px);
   background-color: #fff;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .item-contact{
