@@ -1,47 +1,104 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <title>Boolzapp</title>
-  </head>
-  <body>
+<html>
 
-     <div class="side-container">
-       <div class="name-user">
+<head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.10/css/all.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
 
-       </div>
-       <div class="notifications">
+<body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="sidebar-top">
+          <div class="header">
+            <div class="photo-item d-flex align-items-center">
+              <img src="img/avatar_1.jpg">
+              <div class="user-information d-flex">
+                <h6>Nome Utente</h6>
+              </div>
+            </div>
+            <div class="icons d-flex align-items-center">
+              <i class="fas fa-circle-notch fa-lg"></i>
+              <i class="fas fa-comment-alt fa-lg"></i>
+              <i class="fas fa-ellipsis-v fa-lg"></i>
+            </div>
+            </div>
 
-       </div>
-       <div class="search">
+            <div class="notification d-flex align-items-center">
+              <div class="icon-notification">
+                <i class="fas fa-bell-slash fa-lg"></i>
+              </div>
+              <div class="text-notification">
+                <h6>Ricevi notifiche di nuovi messaggi</h6>
+                <a href="#">Attiva notifiche desktop</a>
+              </div>
+            </div>
 
-       </div>
-       <div class="contacts">
-         <ul>
-           <li>
-             <img src="img/avatar_1.jpg" alt="">
-             <p>Michele</p>
-           </li>
-         </ul>
-       </div>
-     </div>
+            <div class="search-panel d-flex align-items-center">
+              <input class="form-control search-item fal" type="search" placeholder="&#xf002; Cerca o inizia una nuova chat" aria-label="Search">
+            </div>
+          </div>
 
-     <div class="main-container">
-       <div class="contact-input">
+          <div class="list-contact">
+            <div class="item-contact d-flex align-items-center">
+              <div class="contacts d-flex align-items-center">
+                <img src="img/avatar_1.jpg">
+                <h6>Michele</h6>
+              </div>
+              <div class="contacts d-flex align-items-center">
+                <img src="img/avatar_2.jpg">
+                <h6>Fabio</h6>
+              </div>
+              <div class="contacts d-flex align-items-center">
+                <img src="img/avatar_3.jpg">
+                <h6>Samuele</h6>
+              </div>
+              <div class="contacts d-flex align-items-center">
+                <img src="img/avatar_4.jpg">
+                <h6>Luisa</h6>
+              </div>
+            </div>
+          </div>
+        </div>
 
-       </div>
-       <div class="message-space">
+        <div class="main">
+          <div class="main-header">
+            <div class="main-information">
+              <div class="user-main-information">
+                <img src="img/avatar_5.jpg">
+                <div class="main-text-information">
+                  <h6>Michele</h6>
+                  <p>Ultimo accesso oggi alle</p>
+                </div>
+              </div>
+              <div class="main-action">
+                <i class=" fas fa-search fa-lg"></i>
+                <i class=" fas fa-paperclip fa-lg"></i>
+                <i class=" fas fa-ellipsis-v fa-lg"></i>
+              </div>
+            </div>
+          </div>
 
-       </div>
-       <div class="text-area">
+          <div class="space-message">
 
-       </div>
+          </div>
+            <div class="text-area">
+              <div class="smile">
+                <i class="far fa-smile fa-lg"></i>
+              </div>
+              <div class="text-send">
+                <input type="text" class="form-control text-control" placeholder="Scrivi un messaggio">
+              </div>
+              <div class="attached">
+                <i class="fas fa-paperclip fa-lg"></i>
+              </div>
+            </div>
+        </div>
+      </div>
 
-     </div>
-
-     <script src="" charset="utf-8">main.js</script>
-   </body>
-   </html>
+ <script src="main.js" charset="utf-8"></script>
+</body>
+</html>
