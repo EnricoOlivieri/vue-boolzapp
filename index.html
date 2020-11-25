@@ -3,21 +3,25 @@
 <head>
     <title>Boolzapp</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.10/css/all.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="vue.js" charset="utf-8"></script> -->
+
+    </script>
+
 </head>
 
 <body>
-    <div class="container">
+    <div id="root" class= "container">
       <div class="sidebar">
         <div class="sidebar-top">
           <div class="header">
             <div class="photo-item d-flex align-items-center">
-              <img src="img/avatar_io.jpg">
+              <img src="img/avatar_7.jpg">
               <div class="user-information d-flex">
-                <h6>Nome Utente</h6>
+                <h6>{{user.nameUser}}</h6>
               </div>
             </div>
             <div class="icons d-flex align-items-center">
@@ -38,27 +42,18 @@
             </div>
 
             <div class="search-panel d-flex align-items-center">
-              <input class="form-control search-item fal" type="search" placeholder="&#xf002; Cerca o inizia una nuova chat" aria-label="Search">
+              <input class="form-control search-item fal" @click="getAnElementByIndex()" type="search" placeholder="&#xf002; Cerca o inizia una nuova chat" aria-label="Search">
             </div>
           </div>
 
-          <div class="list-contact ">
+          <div class="list-contact" id="contacts">
             <div class="item-contact d-flex flex-column">
-              <div class="contacts d-flex align-items-center">
-                <img src="img/avatar_1.jpg">
-                <h6>Michele</h6>
-              </div>
-              <div class="contacts d-flex align-items-center">
-                <img src="img/avatar_2.jpg">
-                <h6>Fabio</h6>
-              </div>
-              <div class="contacts d-flex align-items-center">
-                <img src="img/avatar_3.jpg">
-                <h6>Samuele</h6>
-              </div>
-              <div class="contacts d-flex align-items-center">
-                <img src="img/avatar_4.jpg">
-                <h6>Luisa</h6>
+              <div class="contacts d-flex align-items-center"
+              v-for ="(contacts, index) in contactList"
+              @click ="openChat(index)"
+              :class = "{active: index == userChatIndex}">
+                <img :src="contacts.imgSrc" alt="">
+                <h6>{{contactList[index].name}}</h6>
               </div>
             </div>
           </div>
@@ -68,9 +63,9 @@
           <div class="main-header">
             <div class="main-information">
               <div class="user-main-information">
-                <img src="img/avatar_1.jpg">
+                <img :src="contactList[userChatIndex].imgSrc" alt="">
                 <div class="main-text-information">
-                  <h6>Michele</h6>
+                  <h6>{{contactList[userChatIndex].name}}</h6>
                   <p>Ultimo accesso oggi alle</p>
                 </div>
               </div>
@@ -82,8 +77,13 @@
             </div>
           </div>
 
-          <div class="space-message">
-
+          <div class="space-message d-flex flex-column">
+            <div class="message d-flex"
+            v-for="txtMessage in contactList[userChatIndex].messages"
+            :class="{greenBalloon: txtMessage.stato==='inviato', whiteBalloon: txtMessage.stato==='ricevuto'}">
+              <span>{{txtMessage.textContent}}</span>
+              <span>{{txtMessage.date}}</span>
+            </div>
           </div>
 
             <div class="text-area">
@@ -91,7 +91,9 @@
                 <i class="far fa-smile fa-lg"></i>
               </div>
               <div class="text-send">
-                <input type="text" class="form-control text-control" placeholder="Scrivi un messaggio">
+                <input type="text" class="form-control text-control" placeholder="Scrivi un messaggio"
+                v-model="messaggioInput"
+                v-on:keyup.enter="submit">
               </div>
               <div class="attached">
                 <i class="fas fa-paperclip fa-lg"></i>
