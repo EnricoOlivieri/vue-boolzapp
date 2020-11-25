@@ -77,10 +77,10 @@
             </div>
           </div>
 
-          <div class="space-message d-flex flex-column">
-            <div class="message d-flex"
+          <div id="chat" class="space-message d-flex flex-column">
+            <div id="dataOra"class="message styleSpace d-flex"
             v-for="txtMessage in contactList[userChatIndex].messages"
-            :class="{greenBalloon: txtMessage.stato==='inviato', whiteBalloon: txtMessage.stato==='ricevuto'}">
+            :class="{greenSpace: txtMessage.stato==='inviato', whiteSpace: txtMessage.stato==='ricevuto'}">
               <span>{{txtMessage.textContent}}</span>
               <span>{{txtMessage.date}}</span>
             </div>
