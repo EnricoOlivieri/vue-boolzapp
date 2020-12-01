@@ -144,14 +144,16 @@ const boolzapp = new Vue ({
   }
 ],
 
-userChatIndex: 0,
+    filteredContact: [],
+    searchText: '',
+    userChatIndex: 0,
     messaggioInput:'',
     messaggioCPU: 'Ciao',
 },
 
   methods: {
     openChat: function(index) {
-      this.userChatIndex= index;
+      this.userChatIndex = index;
     },
     submit: function() {
       this.messaggioInput += '';
@@ -161,13 +163,16 @@ userChatIndex: 0,
 
       setTimeout(()=>{
       this.contactList[this.userChatIndex].messages.push({"textContent": this.messaggioCPU, "state": "ricevuto", "date": "24/11/2020 12:00"})
-      },3000);
-
-
+      },1000);
 
       this.messaggioInput ='';
       console.log(this.messaggioInput);
-
-    }
+    },
+    filterContacts: function() {
+      this.filteredContact = this.contactList.filter( (contacts) => contacts.name.toLowerCase().includes(this.searchText) )
+  },
+  updateIndex: function(id) {
+     this.userChatIndex = this.contactList.findIndex( e => id === e.id)
+   },
   }
 })

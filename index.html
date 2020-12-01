@@ -42,22 +42,38 @@
             </div>
 
             <div class="search-panel d-flex align-items-center">
-              <input class="form-control search-item fal" @click="getAnElementByIndex()" type="search" placeholder="&#xf002; Cerca o inizia una nuova chat" aria-label="Search">
+              <input class="form-control search-item fal"
+              type="search" v-model="searchText" v-on:keyup="filterContacts" placeholder="&#xf002; Cerca o inizia una nuova chat"
+              aria-label="Search">
             </div>
           </div>
 
           <div class="list-contact" id="contacts">
             <div class="item-contact d-flex flex-column">
+              <template v-if="searchText.length > 0">
               <div class="contacts d-flex align-items-center"
-              v-for ="(contacts, index) in contactList"
-              @click ="openChat(index)"
-              :class = "{active: index == userChatIndex}">
+              v-for ="(contacts, index) in filteredContact"
+              @click ="updateIndex(contacts.id)"
+              :class = "">
                 <img :src="contacts.imgSrc" alt="">
-                <h6>{{contactList[index].name}}</h6>
+                <h6>{{filteredContact[index].name}}</h6>
               </div>
+              </template>
+
+              <template v-else>
+                <div class="contacts d-flex align-items-center" v-for ="(contacts, index) in contactList"
+                    @click ="openChat(index); updateIndex(contacts.id)"
+                    :class = "{active: index == userChatIndex}">>
+                    <img :src="contacts.imgSrc" alt="">
+                    <h6>{{contactList[index].name}}</h6>
+                </div>
+              </template>
             </div>
           </div>
         </div>
+
+
+
 
         <div class="main">
           <div class="main-header">
@@ -78,11 +94,11 @@
           </div>
 
           <div id="chat" class="space-message d-flex flex-column">
-            <div id="dataOra"class="message styleSpace d-flex"
+            <div class="message styleSpace d-flex"
             v-for="txtMessage in contactList[userChatIndex].messages"
             :class="{greenSpace: txtMessage.stato==='inviato', whiteSpace: txtMessage.stato==='ricevuto'}">
               <span>{{txtMessage.textContent}}</span>
-              <span>{{txtMessage.date}}</span>
+              <span id="dataOra">{{txtMessage.date}}</span>
             </div>
           </div>
 
